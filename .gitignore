@@ -1,0 +1,3 @@
+*.pyc
+thrift/
+.DS_Store

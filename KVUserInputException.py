@@ -1,0 +1,2 @@
+class KVUserInputException(Exception):
+    pass
