@@ -2,7 +2,11 @@
 
 Proyecto Final de Sistemas Distribuidos, ESPOL 2016-2T
 
-###Objetivos:
+-   [Objetivos](###objetivos:)
+-   [Requerimientos](###requerimientos:)
+-   [Instrucciones](###instrucciones:)
+
+###Objetivos
 
 Diseñar e implementar un key-value store de un solo nodo capaz de conectarse a uno o más clientes a la vez a un servidor que mantiene un key-value store en memoria.
 
@@ -12,7 +16,7 @@ El servidor debe recibir como parámetro el número del puerto en el que estar
 
 Para iniciar el programa cliente, se debe proporcionar la IP (o nombre de dominio) y puerto del servidor. Al iniciar, el cliente se conecta al servidor (socket TCP), contactándola en la IP y puerto indicado. El cliente debe leer comandos por teclado (stdin), validarlos, y enviarlos al servidor.
 
-###Requerimientos:
+###Requerimientos
 
 *   KeyValue Server debe soportar los siguientes comandos por el cliente:
 
@@ -37,3 +41,57 @@ Para iniciar el programa cliente, se debe proporcionar la IP (o nombre de domini
 *   Cualquier mensaje de error debe mostrarse en pantalla de la siguiente manera: ERROR: Mensaje de error.
 
 *   El servidor debe proteger adecuadamente cualquier recurso compartido, de tal manera que no sea susceptible a condiciones de carrera.
+
+###Instrucciones
+
+Para instalar librerias utilizadas:
+
+    pip install requirements.txt
+
+**KVServer** es el servidor, para inicializar el servidor:
+
+    python KVServer.py PUERTO
+
+Si no se asigna un puerto, el servidor tomara por defecto el puerto 9000.
+
+**KVClient** es una implementacion de cliente, para usarlo:
+
+    python KVClient.py HOST PUERTO
+
+Si no se asigna HOST o PUERTO tomara por defecto 'localhost' y puerto 9000, en caso de especificar estos parametros es necesario que se especifiquen los dos en el orden indicado.
+
+Los comandos soportados por **KVClient** son:
+
+  help: Lista los comandos soportados por el cliente.
+
+    KVClient> help
+
+  ping: Realiza un ping al servidor.
+
+    KVClient> ping
+
+  get: Retorna el valor asociado a una clave. Posee opciones para retornar valor en xml, json o yml.
+
+    KVClient> get key
+    KVClient> get key --xml
+    KVClient> get key --json
+    KVClient> get key --yml
+
+  set: Almacena una clave con su valor asociado.
+
+    KVClient> set key value
+
+  del: Elimina una clave y su valor asociado del servidor.
+
+    KVClient> del key
+
+  list: Lista todas las claves disponibles en el servidor.
+
+    KVClient> list
+    KVClient> list --xml
+    KVClient> list --json
+    KVClient> list --yml
+
+  exit: Termina la conexion con el servidor y finaliza el programa.
+
+    KVClient> exit
